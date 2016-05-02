@@ -1,10 +1,11 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
-<html lang="en">
+<!DOCTYPE html>
+<html>
 
 <HEAD>
+<meta charset="utf-8">
 <TITLE>Assigning property values, Cascading, and Inheritance</TITLE>
 <link rel="stylesheet" href="style/default.css" type="text/css">
-<link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/W3C-REC.css" type="text/css">
+<link rel="stylesheet" href="style/W3C-REC.css" type="text/css">
 <link rel="prev" href="selector.html">
 <link rel="next" href="media.html">
 <link rel="contents" href="cover.html#minitoc">
@@ -50,44 +51,69 @@
   </ul>
 </div>
 <!-- warning -->
-<div> <input id=annoying-warning type=checkbox title="hide note"> <label for=annoying-warning>(hide)</label> <div class=annoying-warning> <p><strong>Note:</strong> Several sections of this specification have been updated by other specifications. Please, see <a href="https://www.w3.org/TR/CSS/#css" >"Cascading Style Sheets (CSS) &mdash; The Official Definition"</a> in the latest <cite>CSS Snapshot</cite> for a list of specifications and the sections they replace. <p>The CSS Working Group is also developing <a href="http://www.w3.org/TR/CSS22/" >CSS level&nbsp;2 revision&nbsp;2 (CSS&nbsp;2.2).</a> </div> </div>
+<!-- <div> <input id=annoying-warning type=checkbox title="hide note"> <label for=annoying-warning>(hide)</label> <div class=annoying-warning> <p><strong>Note:</strong> Several sections of this specification have been updated by other specifications. Please, see <a href="https://www.w3.org/TR/CSS/#css" >"Cascading Style Sheets (CSS) &mdash; The Official Definition"</a> in the latest <cite>CSS Snapshot</cite> for a list of specifications and the sections they replace. <p>The CSS Working Group is also developing <a href="http://www.w3.org/TR/CSS22/" >CSS level&nbsp;2 revision&nbsp;2 (CSS&nbsp;2.2).</a> </div> </div> -->
 <!-- /warning -->
 
 <h2>6.1 <a name="value-stages">Specified, computed, and actual values</a></h2>
 
-<p>Once a user agent has parsed a document and constructed a <a
+<!-- <p>Once a user agent has parsed a document and constructed a <a
 href="conform.html#doctree">document tree</a>, it must assign, for
 every element in the tree, a value to every property that applies to the
-target <a href="media.html">media type</a>. 
+target <a href="media.html">media type</a>.  -->
 
-<p>The final value of a property is the result of a four-step
+<p>一旦浏览器解析文档并构建 <a
+href="conform.html#doctree">document tree</a>, 它必须为树中每个元素，适用于当前 <a href="media.html">media type</a> 的每个属性赋值。
+
+<!-- <p>The final value of a property is the result of a four-step
 calculation: the value is determined through specification (the
 "specified value"), then resolved into a value that is used for
 inheritance (the "computed value"), then converted into an absolute
 value if necessary (the "used value"), and finally transformed
 according to the limitations of the local environment (the "actual
-value").
+value"). -->
+
+<p>最终的属性值是由四步计算得到的：
+<ol>
+  <li>通过指定得到的值 (the
+"specified value")</li>
+  <li>解析为用于继承的值 (the "computed value")</li>
+<li>如果必要的话转换为绝对值 (the "used value")</li>
+<li>根据本地环境的限制转换为相应值 (the "actual
+value")</li>
+</ol>
 
 <h3>6.1.1 <span class="index-def" title="specified value">
 <a name="specified-value">Specified values</a></span></h3>
 
-<p>User agents must first assign a specified value to each property based
-on the following mechanisms (in order of precedence):</p>
+<!-- <p>User agents must first assign a specified value to each property based
+on the following mechanisms (in order of precedence):</p> -->
 
-<ol>
+<p>浏览器必须按以下规则为每个属性赋值 （按优先级顺序）：</p>
+
+<!-- <ol>
 <li>If the <a href="#cascade">cascade</a> results in a value, use it.
 <li>Otherwise, if the property is <a href="#inheritance">inherited</a> and the element is not the root of the <a>document tree</a>, use the computed value of the parent element.
 <li>Otherwise use the property's <a name="x1"><span class="index-def" title="initial value">initial value</span></a>. The initial value of each property is indicated in the property's definition. 
+</ol> -->
+
+<ol>
+<li>如果 <a href="#cascade">cascade</a> 返回值，则使用它。
+<li>否则，如果属性是 <a href="#inheritance">继承</a> 的，且元素不是文档根元素， 使用父元素的 computed value 。
+<li>否则，使用属性的 <a name="x1"><span class="index-def" title="initial value">initial value</span></a>。 属性的初始值在属性的定义中。
 </ol>
 
 
 <h3>6.1.2 <span class="index-def" title="computed value">
 <a name="computed-value">Computed values</a></span></h3>
 
-<p>Specified values are resolved to computed values during the cascade;
+<!-- <p>Specified values are resolved to computed values during the cascade;
 for example URIs are made absolute and 'em' and 'ex'
 units are computed to pixel or absolute lengths. Computing a value
-never requires the user agent to render the document.
+never requires the user agent to render the document. -->
+
+<p>Specified values 在 cascade 过程中被解析为 computed values ；
+例如 URIs 转换为绝对路径，  'em' 和 'ex'
+计算为像素或绝对长度。 计算值的时候不会要求浏览器渲染文档。
 
 <p>The computed value of URIs that the UA cannot resolve to absolute
 URIs is the specified value.
