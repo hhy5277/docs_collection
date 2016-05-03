@@ -115,81 +115,113 @@ never requires the user agent to render the document. -->
 例如 URIs 转换为绝对路径，  'em' 和 'ex'
 计算为像素或绝对长度。 计算值的时候不会要求浏览器渲染文档。
 
-<p>The computed value of URIs that the UA cannot resolve to absolute
-URIs is the specified value.
+<!-- <p>The computed value of URIs that the UA cannot resolve to absolute
+URIs is the specified value. -->
 
-<p>The computed value of a
+<p>浏览器不能解析为绝对路径的 URIs 的 computed value 就是它的的 specified value。
+
+<!-- <p>The computed value of a
 property is determined as specified by the Computed Value line in the
 definition of the
 property. See the section on <a href="#inheritance">inheritance</a>
 for the definition of computed values when the specified value is
-'inherit'.
+'inherit'. -->
 
-<p>The computed value exists even when the property does not apply, as
+<p>在属性的定义中，有一行 Computed Value ，浏览器根据这条规则确定属性的 computed value。 参看 <a href="#inheritance">inheritance</a> 章节以了解当 specified value 是
+'inherit' 时 computed values 的定义。
+
+<!-- <p>The computed value exists even when the property does not apply, as
 defined by the <a href="about.html#applies-to">'Applies To'</a> line.
 However, some
 properties may define the computed value of a property for an element
-to depend on whether the property applies to that element.
+to depend on whether the property applies to that element. -->
 
+<p>按照 <a href="about.html#applies-to">'Applies To'</a> 这一行的定义，即使属性不适用， computed value 也是存在的。然而，有些属性还是会根据该属性是否适用于特定元素来确定该元素相应属性的 computed value 。
 
 <h3>6.1.3 <span class="index-def" title="used value">
 <a name="used-value">Used values</a></span></h3>
 
-<p>Computed values are processed as far as possible without formatting
+<!-- <p>Computed values are processed as far as possible without formatting
 the document. Some values, however, can only be determined when the
 document is being laid out. For example, if the width of an element is
 set to be a certain percentage of its containing block, the width
 cannot be determined until the width of the containing block has been
 determined. The <dfn id="usedValue">used value</dfn> is the result of
 taking the computed value and resolving any remaining dependencies
-into an absolute value.
+into an absolute value. -->
+
+<p>Computed values 会在不格式化文档的条件下尽可能被处理。 然而，有些值只有在文档被布局的时候才能确定。 例如，元素的宽度被设定为相对于它的 containing block 的百分比，只有 containing block 的宽度确定了才能确定元素的宽度。 <dfn id="usedValue">used value</dfn> 是接收 computed value 并解析相关依赖为绝对值的结果。
 
 <h3>6.1.4 <span class="index-def" title="actual value">
 <a name="actual-value">Actual values</a></span></h3>
 
-<p>A used value is in principle the value used for rendering, but a
+<!-- <p>A used value is in principle the value used for rendering, but a
 user agent may not be able to make use of the value in a given
 environment. For example, a user agent may only be able to render
 borders with integer pixel widths and may therefore have to
 approximate the computed width, or the user agent may be forced to
 use only black and white shades instead of full color. The actual
-value is the used value after any approximations have been applied.
+value is the used value after any approximations have been applied. -->
+
+<p>used value 原则上是用来进行渲染的值， 但是在特定环境下，浏览器可能不能使用该值。 例如，浏览器只能渲染整数像素宽度的边框，因此可能会对 computed width 做近似处理, 有时浏览器会用强制使用黑白而不是全色彩来绘制图形。 actual
+value 是由 used value 进行了大量近似处理最终得到的。
 
 
 <h2>6.2 <a name="inheritance">Inheritance</a></h2>
 
-<p>Some values are inherited by the children of an element in the <a
+<!-- <p>Some values are inherited by the children of an element in the <a
 href="conform.html#doctree">document tree</a>, as described <a
 href="#specified-value">above</a>. Each property <a
 href="about.html#property-defs">defines</a> whether it is inherited or
-not.
+not. -->
+
+<p>在 <a
+href="conform.html#doctree">document tree</a> 中，有些值会被元素的子代继承， <a
+href="#specified-value">同上所述</a>。 每个属性都<a
+href="about.html#property-defs">定义</a>了它能否被继承。
+
+<!-- <div class="html-example"><P>
+Suppose there is an H1 element with an emphasizing element (EM)
+inside:</p> -->
 
 <div class="html-example"><P>
-Suppose there is an H1 element with an emphasizing element (EM)
-inside:</p>
+假定 H1 元素中有一个 emphasizing element (EM)：</p>
 
 <pre>
 &lt;H1&gt;The headline &lt;EM&gt;is&lt;/EM&gt; important!&lt;/H1&gt;
 </pre>
 
-<p>If no color has been assigned to the EM element, the emphasized
+<!-- <p>If no color has been assigned to the EM element, the emphasized
 "is" will inherit the color of the parent element, so if H1 has the
 color blue, the EM element will likewise be in blue.
+</div> -->
+
+<p>如果 EM 元素没有指定颜色， 强调内容
+"is" 会继承父元素的颜色。 因此如果 H1 的颜色为蓝色， EM 的颜色也将是蓝色.
 </div>
 
-<p>When inheritance occurs, elements inherit computed values. The
+<!-- <p>When inheritance occurs, elements inherit computed values. The
 computed value from the parent element becomes both the specified
-value and the computed value on the child.
+value and the computed value on the child. -->
+
+<p>发生继承时，元素继承的是 computed values。父元素的
+computed value 成为了子元素的 specified
+value 和 computed value。
+
+<!-- <div class="example"><P style="display:none">Example(s):</P><P> 
+For example, given the following style sheet:</P> -->
 
 <div class="example"><P style="display:none">Example(s):</P><P> 
-For example, given the following style sheet:</P>
+例如，给出了如下样式表：</P>
 
 <pre>
 body { font-size: 10pt }
 h1 { font-size: 130% }
 </pre>
 
-<p>and this document fragment:
+<!-- <p>and this document fragment: -->
+
+<p>和下面的文档片段：
 
 <pre class="html-example">
 &lt;BODY&gt;
@@ -197,7 +229,7 @@ h1 { font-size: 130% }
 &lt;/BODY&gt;
 </pre>
 
-<p>the <span class="prop-inst-font-size">'font-size'</span> property
+<!-- <p>the <span class="prop-inst-font-size">'font-size'</span> property
 for the H1 element will have the computed value '13pt' (130% times
 10pt, the parent's value). Since the computed value of <a href="fonts.html#propdef-font-size" class="noxref"><span
 class="propinst-font-size">'font-size'</span></a> is inherited, the EM
@@ -205,11 +237,20 @@ element will have the computed value '13pt' as well.  If the
 user agent does not have the 13pt font available, the
 actual value of <a href="fonts.html#propdef-font-size" class="noxref"><span class="propinst-font-size">'font-size'</span></a>
 for both H1 and EM might be, for example, '12pt'.
+</div> -->
+
+<p> H1 元素的 <span class="prop-inst-font-size">'font-size'</span> 属性的 computed value 将是 '13pt' (130% 乘以
+10pt， 父元素的值)。 由于 <a href="fonts.html#propdef-font-size" class="noxref"><span
+class="propinst-font-size">'font-size'</span></a> 的 computed value 是继承的， EM
+元素的字体大小的 computed value 也是 '13pt' 。 如果浏览器没有 13pt 字体，H1 和 EM 的 <a href="fonts.html#propdef-font-size" class="noxref"><span class="propinst-font-size">'font-size'</span></a> 属性的 actual value 可能都是 '12pt'.
 </div>
 
-<p class=note>Note that inheritance follows the document tree and is
+<!-- <p class=note>Note that inheritance follows the document tree and is
 not intercepted by <span class=index-inst><a name="x5"
-href="visuren.html#box-gen">anonymous boxes.</a></span>
+href="visuren.html#box-gen">anonymous boxes.</a></span> -->
+
+<p class=note>注意继承是按照 document tree 中的层次进行的，并且不会被 <span class=index-inst><a name="x5"
+href="visuren.html#box-gen">anonymous boxes</a></span> 阻断。
 
 
 <h3>6.2.1 The <span class="index-def" title="inherit, definition
