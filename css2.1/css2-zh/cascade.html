@@ -257,22 +257,32 @@ href="visuren.html#box-gen">anonymous boxes</a></span> 阻断。
 of"><a name="value-def-inherit">'inherit'</a></span>
 value</h3>
 
-<P>Each property may also have a cascaded value of 'inherit', which
+<!-- <P>Each property may also have a cascaded value of 'inherit', which
 means that, for a given element, the property takes the same specified
 value as the property for the element's parent. The 'inherit' value
 can be used to enforce inheritance of values, and it can also be used on
-properties that are not normally inherited.
+properties that are not normally inherited. -->
 
-<p>If the 'inherit' value is set on the root element, the property is
-assigned its initial value.
+<P>属性值还可以是 'inherit' ，使用该值意味着对于目标元素，使用与父元素相同的 specified
+value 作为属性值。 'inherit' 可用于加强属性值的继承，并且可以用在那些通常并不会继承的属性上面。
 
-<div class="example"><P style="display:none">Example(s):</P><P>In the example below, the <a href="colors.html#propdef-color" class="noxref"><span
+<!-- <p>If the 'inherit' value is set on the root element, the property is
+assigned its initial value. -->
+
+<p>如果是在根元素上面使用 'inherit' ，则属性值会被设为 initial value。
+
+<!-- <div class="example"><P style="display:none">Example(s):</P><P>In the example below, the <a href="colors.html#propdef-color" class="noxref"><span
 class="propinst-color">'color'</span></a> and <a href="colors.html#propdef-background" class="noxref"><span
 class="propinst-background">'background'</span></a> properties are set on
 the BODY element. On all other elements, the 'color' value will be
 inherited and the background will be transparent. If these rules are
 part of the user's style sheet, black text on a white background will
-be enforced throughout the document.
+be enforced throughout the document. -->
+
+<div class="example"><P style="display:none">Example(s):</P><P>在下面的例子中， BODY 元素上设置了 <a href="colors.html#propdef-color" class="noxref"><span
+class="propinst-color">'color'</span></a> 和 <a href="colors.html#propdef-background" class="noxref"><span
+class="propinst-background">'background'</span></a> 属性。 对于其他所有元素， 'color' 值将被继承，
+ background 则会是 transparent。 如果这些规则是 user's style sheet 的一部分，整个文档都会是黑色文本和白色背景。
 
 <PRE>
 body {
@@ -293,7 +303,7 @@ body {
 
 <H2>6.3 <a name="at-import">The @import rule</a></h2>
 
-<P>The <a name="x7"><span class="index-def"
+<!-- <P>The <a name="x7"><span class="index-def"
 title="@import"><dfn>'@import'</dfn></span></a> rule allows users to
 import style rules from other style sheets. In CSS&nbsp;2.1, any
 @import rules must precede all other rules (except the @charset rule,
@@ -301,11 +311,22 @@ if present). See the <a href="syndata.html#at-rules">section on
 parsing</a> for when user agents must ignore @import rules. The
 '@import' keyword must be followed by the URI of the style sheet to
 include. A string is also allowed; it will be interpreted as if it had
-url(...) around it.
+url(...) around it. -->
+
+<P><a name="x7"><span class="index-def"
+title="@import"><dfn>'@import'</dfn></span></a> 是的用户可以从其他样式表导入规则。 在 CSS&nbsp;2.1 中，
+@import 规则必须在其他规则前面（除了 @charset 规则，如果存在的话）。 参见 <a href="syndata.html#at-rules">section on
+parsing</a> 了解浏览器何时会忽略 @import 规则。
+'@import' 关键词后面必须跟着导入样式表的 URI 。字符串也是允许的； 它将按照有
+url(...) 包围的情况进行同样解析。
+
+<!-- <div class="example"><P style="display:none">Example(s):</P><P> 
+The following lines are equivalent in meaning and illustrate both
+'@import' syntaxes (one with "url()" and one with a bare string):</p> -->
 
 <div class="example"><P style="display:none">Example(s):</P><P> 
-The following lines are equivalent in meaning and illustrate both
-'@import' syntaxes (one with "url()" and one with a bare string):</p>
+下面两行是等效的，解释了
+'@import' 的两种语法 （一个有 "url()" 而另一个没有）：</p>
 
 <PRE>
 @import "mystyle.css";
@@ -313,15 +334,24 @@ The following lines are equivalent in meaning and illustrate both
 </PRE>
 </div>
 
-<p>So that user agents can avoid retrieving resources for unsupported
+<!-- <p>So that user agents can avoid retrieving resources for unsupported
 <a href="media.html">media types</a>, authors may specify
 media-dependent <a name="x8"><span class="index-inst"
 title="@import">@import</span></a> rules.  These <a name="x9"><span class="index-def"
 title="conditional import|media-dependent import">conditional
-imports</span></a> specify comma-separated media types after the URI.
+imports</span></a> specify comma-separated media types after the URI. -->
+
+<p>为避免用户为不支持的
+<a href="media.html">media types</a>加载资源， 作者可以指定依赖特定媒介的 <a name="x8"><span class="index-inst"
+title="@import">@import</span></a> 规则。 <a name="x9"><span class="index-def"
+title="conditional import|media-dependent import">conditional
+imports</span></a> 是在 URI 后面指定逗号分隔的媒体类型。
+
+<!-- <div class="example"><P style="display:none">Example(s):</P>
+<p>The following rules illustrate how @import rules can be made media-dependent:</p> -->
 
 <div class="example"><P style="display:none">Example(s):</P>
-<p>The following rules illustrate how @import rules can be made media-dependent:</p>
+<p>下面规则演示了如何为特定媒介添加 @import 规则：</p>
 
 <pre>
 @import url("fineprint.css") print;
@@ -329,39 +359,55 @@ imports</span></a> specify comma-separated media types after the URI.
 </pre>
 </div>
 
-<p>In the absence of any media types, the import is
+<!-- <p>In the absence of any media types, the import is
 unconditional. Specifying 'all' for the medium has the same effect.
 The import only takes effect if the target medium matches the media
-list.
+list. -->
 
-<p>A target medium matches a media list if one of the items in the
-media list is the target medium or 'all'.
+<p>如果没有指定任何媒体类型，则导入时无条件的。指定媒体类型为 'all' 也是同样效果。
+ import 只有在目标媒体类型匹配媒体列表时才生效。
 
-<p class=note>Note that Media Queries <a href="refs.html#ref-MEDIAQ" rel="biblioentry" class="noxref"><span class="informref">[MEDIAQ]</span></a> extends the syntax of
-media lists and the definition of matching.
+<!-- <p>A target medium matches a media list if one of the items in the
+media list is the target medium or 'all'. -->
 
-<p>When the same style sheet is imported or linked to a document in
+<p>如果目标媒体类型匹配媒体类型列表之一或媒体类型声明为 'all'，则媒体类型匹配成功。
+
+<!-- <p class=note>Note that Media Queries <a href="refs.html#ref-MEDIAQ" rel="biblioentry" class="noxref"><span class="informref">[MEDIAQ]</span></a> extends the syntax of
+media lists and the definition of matching. -->
+
+<p class=note>注意 Media Queries <a href="refs.html#ref-MEDIAQ" rel="biblioentry" class="noxref"><span class="informref">[MEDIAQ]</span></a> 扩展了媒体列表的语法和匹配规则。
+
+<!-- <p>When the same style sheet is imported or linked to a document in
 multiple places, user agents must process (or act as though they do)
-each link as though the link were to a separate style sheet.
+each link as though the link were to a separate style sheet. -->
+
+<p>如果相同的样式表在多处被导入或链接到文档。 浏览器必须像处理不同样式表一样处理它们。
 
 <H2>6.4 <a name="cascade">The cascade</a></h2>
 
-<P>Style sheets may have three different origins: author, user, and
+<!-- <P>Style sheets may have three different origins: author, user, and
+user agent.</p> -->
+
+<P>样式表可能有不同的来源： author， user 和
 user agent.</p>
 
 <ul>
-<li><strong>Author</strong>. The author specifies style sheets
+<!-- <li><strong>Author</strong>. The author specifies style sheets
 for a source document according to the conventions of the document
 language. For instance, in HTML, style sheets may be included in the
-document or linked externally.
+document or linked externally. -->
 
-<li><strong>User</strong>: The user may be able to specify style
+<li><strong>Author</strong>. 根据不同的文档语言， author 为文档指定不同的样式表。 例如，在 HTML 中， 样式表可以包含在文档中，也可以从外部链接。
+
+<!-- <li><strong>User</strong>: The user may be able to specify style
 information for a particular document. For example, the user may
 specify a file that contains a style sheet or the user agent may
 provide an interface that generates a user style sheet (or behaves as
-if it did).
+if it did). -->
 
-<li><strong>User agent</strong>: <a
+<li><strong>User</strong>: 用户可以为特定文档指定样式。用户可以为直接指定样式表文件，浏览器也可能提供界面以生成样式。
+
+<!-- <li><strong>User agent</strong>: <a
 href="conform.html#conformance">Conforming user agents</a> must apply
 a <span class="index-def" title="default style sheet"><a
 name="default-style-sheet"><dfn>default style sheet</dfn></a></span>
@@ -371,45 +417,69 @@ elements of the document language in ways that satisfy general
 presentation expectations for the document language (e.g., for visual
 browsers, the EM element in HTML is presented using an italic
 font). See <a href="sample.html">A sample style sheet for HTML
-</a> for a recommended default style sheet for HTML documents.
+</a> for a recommended default style sheet for HTML documents. -->
 
-<p class="note">Note that the user may modify system settings (e.g., 
+<li><strong>User agent</strong>: <a
+href="conform.html#conformance">Conforming user agents</a> 必须使用 <span class="index-def" title="default style sheet"><a
+name="default-style-sheet"><dfn>default style sheet</dfn></a></span>
+。 A user agent's default style sheet 应该为文档元素提供令人满意的符合预期的通常表现形式。 (例如，对于浏览器，HTML 中的 EM 应该表现为斜体)。参见 <a href="sample.html">A sample style sheet for HTML
+</a> 查看推荐的默认 HTML 样式表。
+
+<!-- <p class="note">Note that the user may modify system settings (e.g., 
 system colors) that affect the default style sheet. However, some user 
 agent implementations make it impossible to change the values in the 
-default style sheet.
+default style sheet. -->
+
+<p class="note">注意用户可能修改系统设置 (例如, 
+system colors) ，这可能会影响得到默认样式表。然而，一些浏览器的实现允许修改默认样式表的值。
 </ul>
 
-<P>Style sheets from these three origins will overlap in scope, and
-they interact according to the cascade.
+<!-- <P>Style sheets from these three origins will overlap in scope, and
+they interact according to the cascade. -->
 
-<P>The CSS <a name="x12"><span class="index-def" title="cascade">cascade</span></a>
+<P>三种不同来源的样式表会在作用域中相互覆盖，并根据层叠规则来计算最终的样式。
+
+<!-- <P>The CSS <a name="x12"><span class="index-def" title="cascade">cascade</span></a>
 assigns a weight to each style rule. When several rules apply, the one
-with the greatest weight takes precedence.
+with the greatest weight takes precedence. -->
 
-<P>By default, rules in author style sheets have more weight than
+<P><a name="x12"><span class="index-def" title="cascade">cascade</span></a>
+给每条样式规则分配权重。当有多个规则适用时，权重最大的最终生效。
+
+<!-- <P>By default, rules in author style sheets have more weight than
 rules in user style sheets. Precedence is reversed, however, for
 "!important" rules. All user and author rules have more weight
-than rules in the UA's default style sheet.
+than rules in the UA's default style sheet. -->
+
+<P>通常情况下， author style sheets 权重比 user style sheets 要高。对于
+"!important" 规则则是相反的结果。 所有的 user 和 author 规则权重都比 UA's default style sheet 要高。
 
 
 <H3>6.4.1 <a name="cascading-order">Cascading order</a></H3>
 
-<P>To find the value for an element/property combination, user agents
-must apply the following sorting order:</p>
+<!-- <P>To find the value for an element/property combination, user agents
+must apply the following sorting order:</p> -->
+
+<P>要匹配元素和适用的属性，浏览器必须应用如下规则：</p>
 
 <OL>
-    <LI>
+   <!--  <LI>
       Find all declarations that apply to the element and property in
       question, for the target <a href="media.html">media type</a>.
       Declarations apply if the associated selector <A
       HREF="selector.html">matches</A> the element in question and the
       target medium matches the media list on all @media rules
       containing the declaration and on all links on the path through
-      which the style sheet was reached.
+      which the style sheet was reached. -->
+    <LI>
+      找到所有适用于该元素的所有属性声明。这包括了来自所有匹配的选择器，媒体类型和外部链接中的所有声明。
 
-    <LI>Sort  according to importance (normal or important)
+<!--     <LI>Sort  according to importance (normal or important)
 and origin (author, user, or user agent). In ascending order of
-precedence:
+precedence: -->
+
+    <LI>按照重要性 (normal or important)
+和来源 (author, user, or user agent)排序。 下面规则的优先级是递增的：
 
 <ol>
 <li>user agent declarations
@@ -419,17 +489,24 @@ precedence:
 <li>user important declarations
 </ol>
 
-    <LI>
+    <!-- <LI>
       Sort rules with the same importance and origin by <a href="#specificity">specificity</a> 
       of selector: more specific
       selectors will override more general ones.  Pseudo-elements and
       pseudo-classes are counted as normal elements and classes,
-      respectively.
+      respectively. -->
 
-    <LI>Finally, sort by order specified: if two declarations have the
+    <LI>
+      具有相同重要性和来源的规则按照选择器的 <a href="#specificity">权重(specificity)</a> 
+      排序：更具体的选择器将覆盖普通选择器。 Pseudo-elements 和
+      pseudo-classes 将分别被视为普通 elements 和 classes。
+
+<!--     <LI>Finally, sort by order specified: if two declarations have the
     same weight, origin and specificity, the latter specified wins.
     Declarations in imported style sheets are considered to be before any
-    declarations in the style sheet itself.
+    declarations in the style sheet itself. -->
+
+    <LI>最后，按照声明的顺序排序： 如果两条规则有相同的 weight, origin 和 specificity，则后声明的生效。 imported 的规则视为声明在自身的规则之前。
 
 </OL>
 
